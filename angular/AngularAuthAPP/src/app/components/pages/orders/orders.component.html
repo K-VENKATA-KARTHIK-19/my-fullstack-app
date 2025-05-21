@@ -1,0 +1,24 @@
+<div class="container mt-4">
+  <h2 class="mb-4">Recent Orders</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let order of orders">
+      <div class="card h-100 shadow-sm">
+        <img [src]="order.image" class="card-img-top" alt="Product Image">
+        <div class="card-body">
+          <h5 class="card-title">{{ order.id }}</h5>
+          <p class="card-text">
+            <strong>Customer:</strong> {{ order.customer }}<br>
+            <strong>Date:</strong> {{ order.date }}<br>
+            <strong>Status:</strong> 
+            <span [ngClass]="{
+              'badge bg-success': order.status === 'Delivered',
+              'badge bg-warning text-dark': order.status === 'Processing',
+              'badge bg-info text-dark': order.status === 'Shipped'
+            }">{{ order.status }}</span><br>
+            <strong>Total:</strong> {{ order.total }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
